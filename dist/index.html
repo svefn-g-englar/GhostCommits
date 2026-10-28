@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="GhostCommits reconstructs the history of forgotten GitHub repositories and creates evidence-backed resurrection plans." />
+    <meta name="theme-color" content="#090d0b" />
+    <title>GhostCommits — Software archaeology, made visible</title>
+    <link rel="preconnect" href="https://api.github.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="GhostCommits home">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M9 36.5V22C9 13.7 15.7 7 24 7s15 6.7 15 15v14.5l-5-3.2-5 3.2-5-3.2-5 3.2-5-3.2-5 3.2Z"/><circle cx="19" cy="22" r="2.25"/><circle cx="29" cy="22" r="2.25"/><path d="M19 28.3c3.1 2.3 6.9 2.3 10 0"/></svg>
+        <span>Ghost<span>Commits</span></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#investigation">Investigation</a>
+        <a href="#method">Method</a>
+        <a href="https://github.com" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle display theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="signal-dot"></span> AI SOFTWARE ARCHAEOLOGIST</div>
+          <h1>Every abandoned repository leaves a <em>trace.</em></h1>
+          <p class="lede">GhostCommits reconstructs what happened, separates evidence from inference, and maps a credible path back to life.</p>
+          <form class="repo-form" id="repoForm">
+            <label for="repoUrl">Public GitHub repository</label>
+            <div class="input-shell">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18c-4.5 1.4-4.5-2.5-6.3-3M15.3 21v-3.6c0-1 .1-1.5-.5-2 2.7-.3 5.5-1.3 5.5-6a4.7 4.7 0 0 0-1.3-3.3 4.4 4.4 0 0 0-.1-3.3s-1-.3-3.6 1.3a12.2 12.2 0 0 0-6.6 0C6.2 2.5 5.1 2.8 5.1 2.8A4.4 4.4 0 0 0 5 6.1a4.7 4.7 0 0 0-1.3 3.3c0 4.7 2.8 5.7 5.5 6-.5.5-.6 1-.5 2V21"/></svg>
+              <input id="repoUrl" name="repository" autocomplete="url" spellcheck="false" value="https://github.com/angular/angular.js" placeholder="https://github.com/owner/repository" />
+              <button type="submit" id="inspectButton"><span>Begin autopsy</span><span aria-hidden="true">→</span></button>
+            </div>
+            <p class="form-note"><span>⌁</span> Public repositories only · No code is executed</p>
+          </form>
+          <div class="trust-row" aria-label="Analysis principles">
+            <span>Evidence linked</span><span>Claims scored</span><span>Read-only</span>
+          </div>
+        </div>
+
+        <aside class="case-preview" aria-label="Sample investigation card">
+          <div class="case-topline"><span>CASE FILE / 0042</span><span class="classified">OBSERVED</span></div>
+          <div class="specter" aria-hidden="true">
+            <svg viewBox="0 0 160 170"><path d="M24 143V76C24 42 49 18 80 18s56 24 56 58v67l-14-9-14 9-14-9-14 9-14-9-14 9-14-9-14 9Z"/><ellipse cx="59" cy="75" rx="7" ry="11"/><ellipse cx="101" cy="75" rx="7" ry="11"/><path d="M57 107c15-9 31-9 46 0"/></svg>
+            <div class="scan-line"></div>
+          </div>
+          <div class="preview-meta"><div><small>SUBJECT</small><strong>angular/angular.js</strong></div><div><small>STATUS</small><strong class="amber">Archived</strong></div></div>
+          <div class="heartbeat"><span></span><svg viewBox="0 0 360 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 27h60l11-4 7 4h20l9-20 15 34 12-14h40l7-4 7 4h172"/></svg></div>
+          <div class="preview-footer"><span>LAST SIGNAL</span><strong>READING HISTORY…</strong></div>
+        </aside>
+      </section>
+
+      <section class="investigation" id="investigation" aria-live="polite">
+        <div class="section-heading">
+          <div><span class="kicker">INVESTIGATION 01</span><h2>The repository autopsy</h2></div>
+          <p>Observable activity first. Interpretation second. Every conclusion carries its own trail of evidence.</p>
+        </div>
+
+        <div class="loading-state" id="loadingState" hidden>
+          <div class="radar"><i></i><i></i><i></i><span></span></div>
+          <div><strong>Reconstructing repository history</strong><small id="loadingMessage">Locating the last heartbeat…</small></div>
+        </div>
+
+        <div class="analysis-shell" id="analysisShell">
+          <div class="report-header">
+            <div class="repo-identity">
+              <div class="repo-icon">⌘</div>
+              <div><span id="reportLabel">DEMO CASE FILE</span><h3 id="repoName">angular / angular.js</h3><p id="repoDescription">AngularJS — HTML enhanced for web apps!</p></div>
+            </div>
+            <div class="report-actions">
+              <a class="secondary-button" id="githubLink" href="https://github.com/angular/angular.js" target="_blank" rel="noreferrer">View source ↗</a>
+              <button class="primary-button" id="exportButton" type="button">Export epitaph</button>
+            </div>
+          </div>
+
+          <div class="metrics" id="metrics"></div>
+
+          <div class="tabs" role="tablist" aria-label="Investigation views">
+            <button role="tab" aria-selected="true" aria-controls="autopsyPanel" id="autopsyTab" data-tab="autopsy">01 <span>Autopsy</span></button>
+            <button role="tab" aria-selected="false" aria-controls="whispersPanel" id="whispersTab" data-tab="whispers">02 <span>Whispers</span></button>
+            <button role="tab" aria-selected="false" aria-controls="revivePanel" id="reviveTab" data-tab="revive">03 <span>Revive</span></button>
+          </div>
+
+          <div class="tab-panel" id="autopsyPanel" role="tabpanel" aria-labelledby="autopsyTab">
+            <div class="chart-card">
+              <div class="card-heading"><div><span>ACTIVITY SIGNAL</span><h4>Development heartbeat</h4></div><div class="legend"><span><i></i>Commits sampled</span><span><i></i>Current</span></div></div>
+              <div class="timeline-chart" id="timelineChart" role="img" aria-label="Repository commit activity over time"></div>
+              <p class="chart-caption" id="chartCaption"></p>
+            </div>
+            <aside class="evidence-card">
+              <div class="card-heading"><div><span>FIELD NOTES</span><h4>Verified evidence</h4></div><span class="count-badge" id="evidenceCount">04</span></div>
+              <div id="evidenceList"></div>
+            </aside>
+          </div>
+
+          <div class="tab-panel" id="whispersPanel" role="tabpanel" aria-labelledby="whispersTab" hidden>
+            <div class="narrative-intro"><span>ARCHIVIST SYNTHESIS</span><h4>What the surviving signals tell us</h4><p>Interpretations are generated only from the evidence listed in this case file. They do not claim knowledge of a maintainer’s private intent.</p></div>
+            <div class="findings-grid" id="findingsGrid"></div>
+          </div>
+
+          <div class="tab-panel" id="revivePanel" role="tabpanel" aria-labelledby="reviveTab" hidden>
+            <div class="roadmap-header"><div><span>RESURRECTION BLUEPRINT</span><h4>A careful route back to life</h4></div><p id="roadmapSummary"></p></div>
+            <ol class="roadmap" id="roadmap"></ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="method" id="method">
+        <div class="method-copy"><span class="kicker">HOW IT THINKS</span><h2>Facts are mined.<br/><em>Meaning is earned.</em></h2><p>GhostCommits treats repository text as untrusted evidence, never executes the code it studies, and refuses to turn silence into certainty.</p><a href="#investigation">Explore the current case <span>→</span></a></div>
+        <div class="method-steps">
+          <article><span>01</span><div><h3>Observe</h3><p>Read public metadata, recent commits, issue counts, language signals, and archival state.</p></div></article>
+          <article><span>02</span><div><h3>Corroborate</h3><p>Turn each signal into a source-linked evidence record before interpreting it.</p></div></article>
+          <article><span>03</span><div><h3>Interpret</h3><p>Generate bounded findings with confidence labels and explicit uncertainty.</p></div></article>
+          <article><span>04</span><div><h3>Revive</h3><p>Prioritize safe, concrete actions a new contributor could actually begin.</p></div></article>
+        </div>
+      </section>
+    </main>
+
+    <footer><a class="brand" href="#top"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M9 36.5V22C9 13.7 15.7 7 24 7s15 6.7 15 15v14.5l-5-3.2-5 3.2-5-3.2-5 3.2-5-3.2-5 3.2Z"/><circle cx="19" cy="22" r="2.25"/><circle cx="29" cy="22" r="2.25"/></svg><span>Ghost<span>Commits</span></span></a><p>Built for Hacktoberfest 2026 · Evidence over séance.</p><a href="#top">Back to top ↑</a></footer>
+
+    <canvas id="epitaphCanvas" width="1600" height="1000" hidden></canvas>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
