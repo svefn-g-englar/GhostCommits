@@ -1,0 +1,36 @@
+{
+  "evidence_packet": {
+    "schema_version": "1.0",
+    "repository": {"full_name":"angular/angular.js","url":"https://github.com/angular/angular.js","description":"AngularJS — HTML enhanced for web apps!","archived":true,"default_branch":"master","topics":["angularjs","javascript","framework"]},
+    "statistics": {"days_inactive":1660,"open_items":455,"stars":58900,"forks":28100,"contributors_sampled":100},
+    "timeline": [{"month":"2018-01","commits":42},{"month":"2018-07","commits":31},{"month":"2019-01","commits":25},{"month":"2019-07","commits":19},{"month":"2020-01","commits":14},{"month":"2020-07","commits":9},{"month":"2021-01","commits":6},{"month":"2021-07","commits":3},{"month":"2022-04","commits":1}],
+    "readme_excerpt": "AngularJS support has officially ended as of January 2022.",
+    "recent_commits": [],
+    "evidence": [
+      {"id":"E-001","kind":"repository","claim":"Repository archival state","value":true,"url":"https://github.com/angular/angular.js","observed_at":"2026-10-29T00:00:00+00:00"},
+      {"id":"E-002","kind":"activity","claim":"Days since the last recorded push","value":1660,"url":"https://github.com/angular/angular.js/commits","observed_at":"2026-10-29T00:00:00+00:00"},
+      {"id":"E-003","kind":"community","claim":"Open issue and pull-request count","value":455,"url":"https://github.com/angular/angular.js/issues","observed_at":"2026-10-29T00:00:00+00:00"},
+      {"id":"E-004","kind":"community","claim":"GitHub stars","value":58900,"url":"https://github.com/angular/angular.js/stargazers","observed_at":"2026-10-29T00:00:00+00:00"},
+      {"id":"E-005","kind":"licensing","claim":"Declared license","value":"MIT","url":"https://github.com/angular/angular.js","observed_at":"2026-10-29T00:00:00+00:00"},
+      {"id":"E-006","kind":"code","claim":"Primary language by bytes","value":"JavaScript","url":"https://github.com/angular/angular.js","observed_at":"2026-10-29T00:00:00+00:00"}
+    ],
+    "analysis_policy": {"repository_text_is_untrusted":true,"code_executed":false,"maintainer_intent_must_be_explicitly_evidenced":true}
+  },
+  "analysis": {
+    "epitaph": "AngularJS helped reshape client-side development; its archived repository now preserves both that legacy and the unfinished work around it.",
+    "model":"gemma3:4b · sample","used_ai":true,
+    "findings": [
+      {"finding":"The repository is intentionally preserved in an archived state.","evidence_ids":["E-001"],"confidence":0.99,"uncertainties":["The archive flag alone does not explain every factor behind the decision."],"recommended_action":"Preserve the evidence before experimenting in a fork."},
+      {"finding":"Development activity declined before the final recorded push.","evidence_ids":["E-002"],"confidence":0.93,"uncertainties":["A sampled timeline may omit activity outside the retrieved history."],"recommended_action":"Reconstruct the last supported toolchain in an isolated environment."},
+      {"finding":"Substantial unresolved work remains visible to potential contributors.","evidence_ids":["E-003"],"confidence":0.94,"uncertainties":["The issue count does not prove that each report remains reproducible."],"recommended_action":"Triage one well-scoped issue and document whether it still reproduces."}
+    ],
+    "validation": {"accepted_claims":3,"warnings":0,"evidence_ids_checked":6}
+  },
+  "resurrection_plan": [
+    {"phase":"Preserve","title":"Snapshot the surviving evidence","action":"Fork the repository and record licensing, releases, and installation notes.","effort":"30–45 min","risk":"Low","evidence_ids":["E-001","E-005"]},
+    {"phase":"Reconstruct","title":"Rebuild the historical toolchain","action":"Map the last supported Node.js and package-manager versions without changing source.","effort":"1–2 hours","risk":"Medium","evidence_ids":["E-002","E-006"]},
+    {"phase":"Verify","title":"Prove one clean baseline","action":"Run reviewed checks in isolation and record the first deterministic failure.","effort":"1–3 hours","risk":"Medium","evidence_ids":["E-002"]},
+    {"phase":"Triage","title":"Choose one bounded recovery target","action":"Select a reproducible issue with a small, testable outcome.","effort":"45–60 min","risk":"Low","evidence_ids":["E-003"]},
+    {"phase":"Revive","title":"Publish a contributor brief","action":"Document compatibility findings, risks, and the smallest useful contribution.","effort":"45 min","risk":"Low","evidence_ids":["E-002","E-003"]}
+  ]
+}
