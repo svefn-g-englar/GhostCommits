@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 import re
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Type
 from urllib.parse import urlparse
 
 import requests
@@ -68,45 +68,86 @@ class GitHubClient:
             self.session.headers["Authorization"] = f"Bearer {token}"
 
     def _get(self, path: str, params: Optional[Dict[str, Any]] = None) -> requests.Response:
-        response = self.session.get(
-            f"https://api.github.com{path}", params=params, timeout=self.timeout
-        )
+        try:
+            response = self.session.get(
+                f"https://api.github.com{path}", params=params, timeout=self.timeout
+            )
+        except requests.Timeout as exc:
+            raise GitHubClientError(
+                "GitHub did not respond in time. Retry, or use Load sample for the offline demo."
+            ) from exc
+        except requests.ConnectionError as exc:
+            raise GitHubClientError(
+                "Could not reach GitHub. Check your internet or DNS connection, then retry—or use Load sample."
+            ) from exc
+        except requests.RequestException as exc:
+            raise GitHubClientError(
+                "The GitHub request failed before a usable response was received. Retry or use Load sample."
+            ) from exc
+
         if response.status_code == 404:
             raise GitHubClientError("Repository not found or not publicly accessible.")
+        if response.status_code == 401:
+            raise GitHubClientError("GitHub authentication failed. Check GITHUB_TOKEN and retry.")
         if response.status_code == 403 and response.headers.get("X-RateLimit-Remaining") == "0":
             raise GitHubClientError("GitHub API rate limit reached. Add GITHUB_TOKEN and retry.")
+        if response.status_code == 403:
+            raise GitHubClientError("GitHub denied this request. Check repository access and GITHUB_TOKEN.")
         try:
             response.raise_for_status()
         except requests.HTTPError as exc:
             raise GitHubClientError(f"GitHub returned HTTP {response.status_code}.") from exc
         return response
 
+    @staticmethod
+    def _json(response: requests.Response, expected: Type[Any], label: str) -> Any:
+        try:
+            data = response.json()
+        except (ValueError, requests.JSONDecodeError) as exc:
+            raise GitHubClientError(
+                f"GitHub returned an unreadable {label} response. Retry in a moment."
+            ) from exc
+        if not isinstance(data, expected):
+            shape = "object" if expected is dict else "list"
+            raise GitHubClientError(
+                f"GitHub returned an unexpected {label} response; expected a JSON {shape}."
+            )
+        return data
+
     def repository(self, ref: RepositoryRef) -> Dict[str, Any]:
-        data = self._get(f"/repos/{ref.slug}").json()
+        response = self._get(f"/repos/{ref.slug}")
+        data = self._json(response, dict, "repository")
         if data.get("private"):
             raise GitHubClientError("Private repositories are intentionally unsupported.")
+        missing = [field for field in ("full_name", "html_url") if not data.get(field)]
+        if missing:
+            raise GitHubClientError("GitHub repository metadata was incomplete. Retry in a moment.")
         return data
 
     def commits(self, ref: RepositoryRef, limit: int = 100) -> List[Dict[str, Any]]:
-        return self._get(
+        response = self._get(
             f"/repos/{ref.slug}/commits", {"per_page": min(max(limit, 1), 100)}
-        ).json()
+        )
+        return self._json(response, list, "commit history")
 
     def issues(self, ref: RepositoryRef, limit: int = 40) -> List[Dict[str, Any]]:
-        records = self._get(
+        response = self._get(
             f"/repos/{ref.slug}/issues",
             {"state": "open", "sort": "updated", "per_page": min(limit, 100)},
-        ).json()
-        return [item for item in records if "pull_request" not in item]
+        )
+        records = self._json(response, list, "issue list")
+        return [item for item in records if isinstance(item, dict) and "pull_request" not in item]
 
     def contributors(self, ref: RepositoryRef, limit: int = 100) -> List[Dict[str, Any]]:
         response = self._get(
             f"/repos/{ref.slug}/contributors", {"anon": "true", "per_page": min(limit, 100)}
         )
-        return response.json()
+        records = self._json(response, list, "contributor list")
+        return [item for item in records if isinstance(item, dict)]
 
     def languages(self, ref: RepositoryRef) -> Dict[str, int]:
-        return self._get(f"/repos/{ref.slug}/languages").json()
+        response = self._get(f"/repos/{ref.slug}/languages")
+        return self._json(response, dict, "language summary")
 
     def collect(self, value: str) -> Tuple[RepositoryRef, Dict[str, Any]]:
         ref = parse_public_github_url(value)

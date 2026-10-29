@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
 from git import Repo
+from git.exc import GitCommandError
 
 from .github_client import RepositoryRef
 
@@ -77,13 +78,18 @@ def analyze_repository(
     """Clone without submodules and inspect text only. Repository code is never executed."""
     worktree = Path(tempfile.mkdtemp(prefix="ghostcommits-"))
     try:
-        repo = Repo.clone_from(
-            ref.url,
-            worktree,
-            depth=max(20, min(clone_depth, 1000)),
-            no_single_branch=True,
-            multi_options=["--no-tags", "--filter=blob:limit=1m"],
-        )
+        try:
+            repo = Repo.clone_from(
+                ref.url,
+                worktree,
+                depth=max(20, min(clone_depth, 1000)),
+                no_single_branch=True,
+                multi_options=["--no-tags", "--filter=blob:limit=1m"],
+            )
+        except GitCommandError as exc:
+            raise RuntimeError(
+                "Git history could not be cloned. Check the connection, or turn off Deep Git archaeology and retry."
+            ) from exc
         size_mb = sum(p.stat().st_size for p in worktree.rglob("*") if p.is_file()) / 1_048_576
         if size_mb > max_repository_mb:
             raise RuntimeError(f"Repository checkout exceeded the {max_repository_mb} MB safety cap.")

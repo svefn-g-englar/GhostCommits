@@ -107,8 +107,14 @@ if run:
             packet, analysis, plan, warnings = investigate(url, deep_clone)
             status.update(label="Investigation complete", state="complete", expanded=False)
         st.session_state.report = (packet, analysis, plan, warnings)
-    except (ValueError, GitHubClientError, RuntimeError) as exc:
+    except ValueError as exc:
         st.error(str(exc))
+    except GitHubClientError as exc:
+        st.error(str(exc))
+        st.info("GitHub unavailable? Use **Load sample** to explore the complete investigation workflow offline.")
+    except RuntimeError as exc:
+        st.error(str(exc))
+        st.info("If metadata loaded but cloning failed, turn off **Deep Git archaeology** and retry.")
 elif demo:
     st.session_state.report = load_sample()
 

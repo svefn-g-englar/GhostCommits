@@ -73,7 +73,7 @@ python -m unittest discover -s tests -v
 python -m compileall app.py core ui tests
 ```
 
-Tests cover URL validation, evidence generation, unsupported-claim rejection, confidence normalization, and resurrection planning without network calls.
+Tests cover URL validation, DNS and timeout failures, missing repositories, rate limiting, malformed GitHub responses, evidence generation, unsupported-claim rejection, confidence normalization, and resurrection planning without network calls.
 
 ## Project layout
 
