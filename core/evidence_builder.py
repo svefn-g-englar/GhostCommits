@@ -45,7 +45,7 @@ def build_evidence_packet(
     _record(records, "repository", "Repository archival state", bool(repo.get("archived")), base, observed_at)
     _record(records, "activity", "Days since the last recorded push", _days_since(repo.get("pushed_at")), f"{base}/commits", observed_at)
     _record(records, "community", "Open issue and pull-request count", repo.get("open_issues_count", 0), f"{base}/issues", observed_at)
-    _record(records, "community", "GitHub stars", repo.get("stargazers_count", 0), f"{base}/stargazers", observed_at)
+    _record(records, "community", "GitHub stars", repo.get("stargazers_count", 0), base, observed_at)
     _record(records, "licensing", "Declared license", (repo.get("license") or {}).get("spdx_id") or "Unspecified", base, observed_at)
 
     languages = github_data.get("languages", {})

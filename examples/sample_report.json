@@ -18,7 +18,7 @@
   },
   "analysis": {
     "epitaph": "AngularJS helped reshape client-side development; its archived repository now preserves both that legacy and the unfinished work around it.",
-    "model":"gemma3:4b · sample","used_ai":true,
+    "model":"curated sample","used_ai":false,
     "findings": [
       {"finding":"The repository is intentionally preserved in an archived state.","evidence_ids":["E-001"],"confidence":0.99,"uncertainties":["The archive flag alone does not explain every factor behind the decision."],"recommended_action":"Preserve the evidence before experimenting in a fork."},
       {"finding":"Development activity declined before the final recorded push.","evidence_ids":["E-002"],"confidence":0.93,"uncertainties":["A sampled timeline may omit activity outside the retrieved history."],"recommended_action":"Reconstruct the last supported toolchain in an isolated environment."},

@@ -52,7 +52,10 @@ def load_css(path: str = "ui/styles.css", sidebar_art: str = "assets/sidebar-hau
 def repository_header(packet: Dict[str, Any], analysis: Dict[str, Any]) -> None:
     repo = packet["repository"]
     model = html.escape(str(analysis.get("model", "unknown")))
-    mode = "GEMMA SYNTHESIS" if analysis.get("used_ai") else "DETERMINISTIC FALLBACK"
+    if analysis.get("model") == "curated sample":
+        mode = "CURATED SAMPLE"
+    else:
+        mode = "GEMMA SYNTHESIS" if analysis.get("used_ai") else "DETERMINISTIC FALLBACK"
     st.markdown(
         f"""<section class="case-header">
         <div><span class="micro">CASE FILE · {mode}</span><h2>{html.escape(repo['full_name'])}</h2>

@@ -2,7 +2,19 @@
 
 from __future__ import annotations
 
+import re
 from typing import Any, Dict, List, Tuple
+
+
+EVIDENCE_ID = re.compile(r"^E-(\d{1,3})$", re.IGNORECASE)
+
+
+def _canonical_evidence_id(value: Any) -> str:
+    text = str(value).strip().upper()
+    match = EVIDENCE_ID.fullmatch(text)
+    if not match:
+        return text
+    return f"E-{int(match.group(1)):03d}"
 
 
 def validate_findings(result: Dict[str, Any], packet: Dict[str, Any]) -> Tuple[Dict[str, Any], List[str]]:
@@ -11,7 +23,7 @@ def validate_findings(result: Dict[str, Any], packet: Dict[str, Any]) -> Tuple[D
     warnings: List[str] = []
 
     for index, finding in enumerate(result.get("findings", []), 1):
-        cited = finding.get("evidence_ids", [])
+        cited = [_canonical_evidence_id(item) for item in finding.get("evidence_ids", [])]
         supported = [evidence_id for evidence_id in cited if evidence_id in valid_ids]
         missing = sorted(set(cited) - valid_ids)
         if missing:

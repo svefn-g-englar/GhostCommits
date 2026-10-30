@@ -1,0 +1,833 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-10-30T10:04:19.613283+00:00",
+  "method": {
+    "repositories": 3,
+    "inactive_threshold_days": 365,
+    "clone_depth": 120,
+    "max_repository_mb": 250,
+    "model": "gemma3:1b",
+    "fallback_allowed": false,
+    "live_source_url_checks": true,
+    "started_at": "2026-10-30T10:01:17.773965+00:00"
+  },
+  "aggregate": {
+    "repositories_completed": 3,
+    "classifications_correct": 3,
+    "classification_accuracy": 1.0,
+    "valid_source_urls": 50,
+    "source_urls_checked": 50,
+    "evidence_validity_rate": 1.0,
+    "supported_findings": 3,
+    "findings_checked": 3,
+    "claim_support_rate": 1.0,
+    "actionable_steps": 18,
+    "roadmap_steps_checked": 18,
+    "recommendation_actionability_rate": 1.0,
+    "all_runs_used_ai": true,
+    "total_duration_seconds": 181.81,
+    "average_duration_seconds": 60.6
+  },
+  "cases": [
+    {
+      "repository": "jquery-archive/jquery-mobile",
+      "url": "https://github.com/jquery-archive/jquery-mobile",
+      "selection_reason": "GitHub explicitly marks the repository as archived.",
+      "expected_classification": "archived",
+      "observed_classification": "archived",
+      "classification_correct": true,
+      "archived": true,
+      "days_inactive": 1848,
+      "sampled_commits": 120,
+      "evidence_records": 20,
+      "source_validity": {
+        "valid": 20,
+        "total": 20,
+        "rate": 1.0,
+        "failures": []
+      },
+      "findings": 1,
+      "supported_findings": 1,
+      "claim_support_rate": 1.0,
+      "roadmap_steps": 6,
+      "actionable_steps": 6,
+      "recommendation_actionability_rate": 1.0,
+      "duration_seconds": 111.97,
+      "model": "gemma3:1b",
+      "used_ai": true,
+      "validator_warnings": [],
+      "epitaph": "JSHint",
+      "analysis": [
+        {
+          "finding": "code_executed",
+          "evidence_ids": [
+            "E-001",
+            "E-002",
+            "E-003",
+            "E-004",
+            "E-005",
+            "E-006",
+            "E-007",
+            "E-008",
+            "E-009",
+            "E-010",
+            "E-011",
+            "E-012",
+            "E-013",
+            "E-014",
+            "E-015"
+          ],
+          "confidence": 0.99,
+          "uncertainties": [],
+          "recommended_action": "Review code for potential issues related to the jQuery Mobile framework's core functionality and ensure adherence to best practices."
+        }
+      ],
+      "resurrection_plan": [
+        {
+          "phase": "Preserve",
+          "title": "Snapshot the surviving evidence",
+          "action": "Fork the repository, record licensing, releases, installation notes, and the current default branch.",
+          "effort": "30–45 min",
+          "risk": "Low",
+          "evidence_ids": [
+            "E-001",
+            "E-005"
+          ]
+        },
+        {
+          "phase": "Reproduce",
+          "title": "Reconstruct an isolated toolchain",
+          "action": "Identify the last documented JavaScript runtime and dependency lockfiles. Work only inside a disposable environment.",
+          "effort": "1–2 hr",
+          "risk": "Medium",
+          "evidence_ids": [
+            "E-006"
+          ]
+        },
+        {
+          "phase": "Verify",
+          "title": "Establish one clean baseline",
+          "action": "Run only reviewed, documented checks; capture missing dependencies and failures without silently fixing them.",
+          "effort": "1–3 hr",
+          "risk": "Medium",
+          "evidence_ids": [
+            "E-002"
+          ]
+        },
+        {
+          "phase": "Triage",
+          "title": "Choose one bounded recovery target",
+          "action": "Review the 182 open items and select a reproducible issue with a small, observable outcome.",
+          "effort": "45–60 min",
+          "risk": "Low",
+          "evidence_ids": [
+            "E-003"
+          ]
+        },
+        {
+          "phase": "Revive",
+          "title": "Publish a contributor-ready brief",
+          "action": "Document compatibility findings, unresolved risks, and the smallest useful change for jquery-archive/jquery-mobile before broad modernization.",
+          "effort": "45 min",
+          "risk": "Low",
+          "evidence_ids": [
+            "E-002",
+            "E-003"
+          ]
+        },
+        {
+          "phase": "Model insight",
+          "title": "Test the strongest evidence-backed suggestion",
+          "action": "Review code for potential issues related to the jQuery Mobile framework's core functionality and ensure adherence to best practices.",
+          "effort": "Variable",
+          "risk": "Review",
+          "evidence_ids": [
+            "E-001",
+            "E-002",
+            "E-003",
+            "E-004",
+            "E-005",
+            "E-006",
+            "E-007",
+            "E-008",
+            "E-009",
+            "E-010",
+            "E-011",
+            "E-012",
+            "E-013",
+            "E-014",
+            "E-015"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E-001",
+          "kind": "repository",
+          "claim": "Repository archival state",
+          "value": true,
+          "source_url": "https://github.com/jquery-archive/jquery-mobile",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-002",
+          "kind": "activity",
+          "claim": "Days since the last recorded push",
+          "value": 1848,
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/commits",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-003",
+          "kind": "community",
+          "claim": "Open issue and pull-request count",
+          "value": 182,
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/issues",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-004",
+          "kind": "community",
+          "claim": "GitHub stars",
+          "value": 9590,
+          "source_url": "https://github.com/jquery-archive/jquery-mobile",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-005",
+          "kind": "licensing",
+          "claim": "Declared license",
+          "value": "NOASSERTION",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-006",
+          "kind": "code",
+          "claim": "Primary language by bytes",
+          "value": "JavaScript",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-007",
+          "kind": "issue",
+          "claim": "Replace JSF CLA with OpenJS CLA",
+          "value": "open",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/issues/8674",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-008",
+          "kind": "issue",
+          "claim": "Download builder problems",
+          "value": "open",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/issues/8673",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-009",
+          "kind": "issue",
+          "claim": "Swiping unexpectedly prevents text selection",
+          "value": "open",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/issues/8670",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-010",
+          "kind": "issue",
+          "claim": "Security issues",
+          "value": "open",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/issues/8640",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-011",
+          "kind": "issue",
+          "claim": "JQuery Mobile is Brilliant (2020)",
+          "value": "open",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/issues/8662",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-012",
+          "kind": "history",
+          "claim": "Sampled commit count",
+          "value": 120,
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/commits",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-013",
+          "kind": "unfinished",
+          "claim": "XXX in js/vmouse.js",
+          "value": "We may want to consider removing matches from the block list",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/blob/HEAD/js/vmouse.js#L541",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-014",
+          "kind": "unfinished",
+          "claim": "TODO in js/init.js",
+          "value": "figure out how to simplify this interaction with the initial history entry",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/blob/HEAD/js/init.js#L140",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-015",
+          "kind": "unfinished",
+          "claim": "TODO in js/navigation.js",
+          "value": "teach $.mobile.hijackable to operate on raw dom elements so the",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/blob/HEAD/js/navigation.js#L232",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-016",
+          "kind": "unfinished",
+          "claim": "TODO in js/navigation.js",
+          "value": "teach $.mobile.hijackable to operate on raw dom elements so the link wrapping",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/blob/HEAD/js/navigation.js#L280",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-017",
+          "kind": "unfinished",
+          "claim": "TODO in js/navigation.js",
+          "value": "overlap in logic from isExternal, rel=external check should be",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/blob/HEAD/js/navigation.js#L341",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-018",
+          "kind": "unfinished",
+          "claim": "TODO in js/helpers.js",
+          "value": "Remove and use $.ui.keyCode directly",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/blob/HEAD/js/helpers.js#L85",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-019",
+          "kind": "unfinished",
+          "claim": "TODO in js/navigation/history.js",
+          "value": "this is hyper confusing and should be cleaned up (ugh so bad)",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/blob/HEAD/js/navigation/history.js#L134",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        },
+        {
+          "id": "E-020",
+          "kind": "unfinished",
+          "claim": "TODO in js/navigation/history.js",
+          "value": "this is also convoluted and confusing",
+          "source_url": "https://github.com/jquery-archive/jquery-mobile/blob/HEAD/js/navigation/history.js#L156",
+          "observed_at": "2026-10-30T10:02:42.261703+00:00"
+        }
+      ]
+    },
+    {
+      "repository": "nvbn/thefuck",
+      "url": "https://github.com/nvbn/thefuck",
+      "selection_reason": "Not archived, with no recorded push for more than one year at evaluation time.",
+      "expected_classification": "inactive",
+      "observed_classification": "inactive",
+      "classification_correct": true,
+      "archived": false,
+      "days_inactive": 832,
+      "sampled_commits": 120,
+      "evidence_records": 14,
+      "source_validity": {
+        "valid": 14,
+        "total": 14,
+        "rate": 1.0,
+        "failures": []
+      },
+      "findings": 1,
+      "supported_findings": 1,
+      "claim_support_rate": 1.0,
+      "roadmap_steps": 6,
+      "actionable_steps": 6,
+      "recommendation_actionability_rate": 1.0,
+      "duration_seconds": 35.04,
+      "model": "gemma3:1b",
+      "used_ai": true,
+      "validator_warnings": [],
+      "epitaph": "The Fuck is a command-line application that corrects previous console commands.",
+      "analysis": [
+        {
+          "finding": "The application attempts to match previous commands with a rule.",
+          "evidence_ids": [
+            "E-001",
+            "E-002",
+            "E-003",
+            "E-004",
+            "E-005",
+            "E-006",
+            "E-007",
+            "E-008",
+            "E-009",
+            "E-010",
+            "E-011",
+            "E-012",
+            "E-013",
+            "E-014"
+          ],
+          "confidence": 0.95,
+          "uncertainties": [],
+          "recommended_action": "None"
+        }
+      ],
+      "resurrection_plan": [
+        {
+          "phase": "Preserve",
+          "title": "Snapshot the surviving evidence",
+          "action": "Fork the repository, record licensing, releases, installation notes, and the current default branch.",
+          "effort": "30–45 min",
+          "risk": "Low",
+          "evidence_ids": [
+            "E-001",
+            "E-005"
+          ]
+        },
+        {
+          "phase": "Reproduce",
+          "title": "Reconstruct an isolated toolchain",
+          "action": "Identify the last documented Python runtime and dependency lockfiles. Work only inside a disposable environment.",
+          "effort": "1–2 hr",
+          "risk": "Medium",
+          "evidence_ids": [
+            "E-006"
+          ]
+        },
+        {
+          "phase": "Verify",
+          "title": "Establish one clean baseline",
+          "action": "Run only reviewed, documented checks; capture missing dependencies and failures without silently fixing them.",
+          "effort": "1–3 hr",
+          "risk": "Medium",
+          "evidence_ids": [
+            "E-002"
+          ]
+        },
+        {
+          "phase": "Triage",
+          "title": "Choose one bounded recovery target",
+          "action": "Review the 468 open items and select a reproducible issue with a small, observable outcome.",
+          "effort": "45–60 min",
+          "risk": "Low",
+          "evidence_ids": [
+            "E-003"
+          ]
+        },
+        {
+          "phase": "Revive",
+          "title": "Publish a contributor-ready brief",
+          "action": "Document compatibility findings, unresolved risks, and the smallest useful change for nvbn/thefuck before broad modernization.",
+          "effort": "45 min",
+          "risk": "Low",
+          "evidence_ids": [
+            "E-002",
+            "E-003"
+          ]
+        },
+        {
+          "phase": "Model insight",
+          "title": "Test the strongest evidence-backed suggestion",
+          "action": "None",
+          "effort": "Variable",
+          "risk": "Review",
+          "evidence_ids": [
+            "E-001",
+            "E-002",
+            "E-003",
+            "E-004",
+            "E-005",
+            "E-006",
+            "E-007",
+            "E-008",
+            "E-009",
+            "E-010",
+            "E-011",
+            "E-012",
+            "E-013",
+            "E-014"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E-001",
+          "kind": "repository",
+          "claim": "Repository archival state",
+          "value": false,
+          "source_url": "https://github.com/nvbn/thefuck",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-002",
+          "kind": "activity",
+          "claim": "Days since the last recorded push",
+          "value": 832,
+          "source_url": "https://github.com/nvbn/thefuck/commits",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-003",
+          "kind": "community",
+          "claim": "Open issue and pull-request count",
+          "value": 468,
+          "source_url": "https://github.com/nvbn/thefuck/issues",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-004",
+          "kind": "community",
+          "claim": "GitHub stars",
+          "value": 97933,
+          "source_url": "https://github.com/nvbn/thefuck",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-005",
+          "kind": "licensing",
+          "claim": "Declared license",
+          "value": "MIT",
+          "source_url": "https://github.com/nvbn/thefuck",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-006",
+          "kind": "code",
+          "claim": "Primary language by bytes",
+          "value": "Python",
+          "source_url": "https://github.com/nvbn/thefuck",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-007",
+          "kind": "issue",
+          "claim": "The Bleep - A fast, maintained successor to The Fuck",
+          "value": "open",
+          "source_url": "https://github.com/nvbn/thefuck/issues/1618",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-008",
+          "kind": "issue",
+          "claim": "split_command: the \\ -space placeholder collides with literal ?? in arguments, mangling filenames in suggested commands",
+          "value": "open",
+          "source_url": "https://github.com/nvbn/thefuck/issues/1633",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-009",
+          "kind": "issue",
+          "claim": "cp_create_destination also matches missing-SOURCE errors and suggests mkdir -p of the target (creates an unwanted directory for mv renames)",
+          "value": "open",
+          "source_url": "https://github.com/nvbn/thefuck/issues/1632",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-010",
+          "kind": "issue",
+          "claim": "apt_invalid_operation no longer matches apt 3.0 output (\"Error: Invalid operation\" instead of \"E: Invalid operation\")",
+          "value": "open",
+          "source_url": "https://github.com/nvbn/thefuck/issues/1631",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-011",
+          "kind": "issue",
+          "claim": "dirty_unzip / dirty_untar side_effect can delete files outside the current directory (cwd prefix check has no path-separator boundary)",
+          "value": "open",
+          "source_url": "https://github.com/nvbn/thefuck/issues/1630",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-012",
+          "kind": "history",
+          "claim": "Sampled commit count",
+          "value": 120,
+          "source_url": "https://github.com/nvbn/thefuck/commits",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-013",
+          "kind": "unfinished",
+          "claim": "TODO in tests/functional/test_tcsh.py",
+          "value": "ensure that history changes.",
+          "source_url": "https://github.com/nvbn/thefuck/blob/HEAD/tests/functional/test_tcsh.py#L37",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        },
+        {
+          "id": "E-014",
+          "kind": "unfinished",
+          "claim": "TODO in tests/functional/test_fish.py",
+          "value": "ensure that history changes.",
+          "source_url": "https://github.com/nvbn/thefuck/blob/HEAD/tests/functional/test_fish.py#L36",
+          "observed_at": "2026-10-30T10:03:20.378157+00:00"
+        }
+      ]
+    },
+    {
+      "repository": "pallets/flask",
+      "url": "https://github.com/pallets/flask",
+      "selection_reason": "Not archived, with a recorded push within the last year at evaluation time.",
+      "expected_classification": "active",
+      "observed_classification": "active",
+      "classification_correct": true,
+      "archived": false,
+      "days_inactive": 22,
+      "sampled_commits": 120,
+      "evidence_records": 16,
+      "source_validity": {
+        "valid": 16,
+        "total": 16,
+        "rate": 1.0,
+        "failures": []
+      },
+      "findings": 1,
+      "supported_findings": 1,
+      "claim_support_rate": 1.0,
+      "roadmap_steps": 6,
+      "actionable_steps": 6,
+      "recommendation_actionability_rate": 1.0,
+      "duration_seconds": 34.8,
+      "model": "gemma3:1b",
+      "used_ai": true,
+      "validator_warnings": [],
+      "epitaph": "Flask is a Python micro framework designed for building web applications. It emphasizes ease of use and rapid development, offering suggestions but not enforcing dependencies or project layouts. The `WSGI` and `Werkzeug` libraries are integrated, suggesting a focus on web development tools.",
+      "analysis": [
+        {
+          "finding": "Flask is a lightweight framework, suggesting a focus on simplicity and ease of use.",
+          "evidence_ids": [
+            "E-001",
+            "E-002",
+            "E-003",
+            "E-004",
+            "E-005",
+            "E-006",
+            "E-007",
+            "E-008",
+            "E-009",
+            "E-010",
+            "E-011",
+            "E-012",
+            "E-013",
+            "E-014",
+            "E-015"
+          ],
+          "confidence": 0.95,
+          "uncertainties": [],
+          "recommended_action": "Further investigation into Flask's design philosophy and its role within the Python ecosystem is warranted."
+        }
+      ],
+      "resurrection_plan": [
+        {
+          "phase": "Preserve",
+          "title": "Snapshot the surviving evidence",
+          "action": "Fork the repository, record licensing, releases, installation notes, and the current default branch.",
+          "effort": "30–45 min",
+          "risk": "Low",
+          "evidence_ids": [
+            "E-001",
+            "E-005"
+          ]
+        },
+        {
+          "phase": "Reproduce",
+          "title": "Reconstruct an isolated toolchain",
+          "action": "Identify the last documented Python runtime and dependency lockfiles. Work only inside a disposable environment.",
+          "effort": "1–2 hr",
+          "risk": "Medium",
+          "evidence_ids": [
+            "E-006"
+          ]
+        },
+        {
+          "phase": "Verify",
+          "title": "Establish one clean baseline",
+          "action": "Run only reviewed, documented checks; capture missing dependencies and failures without silently fixing them.",
+          "effort": "1–3 hr",
+          "risk": "Medium",
+          "evidence_ids": [
+            "E-002"
+          ]
+        },
+        {
+          "phase": "Triage",
+          "title": "Choose one bounded recovery target",
+          "action": "Review the 4 open items and select a reproducible issue with a small, observable outcome.",
+          "effort": "45–60 min",
+          "risk": "Low",
+          "evidence_ids": [
+            "E-003"
+          ]
+        },
+        {
+          "phase": "Revive",
+          "title": "Publish a contributor-ready brief",
+          "action": "Document compatibility findings, unresolved risks, and the smallest useful change for pallets/flask before broad modernization.",
+          "effort": "45 min",
+          "risk": "Low",
+          "evidence_ids": [
+            "E-002",
+            "E-003"
+          ]
+        },
+        {
+          "phase": "Model insight",
+          "title": "Test the strongest evidence-backed suggestion",
+          "action": "Further investigation into Flask's design philosophy and its role within the Python ecosystem is warranted.",
+          "effort": "Variable",
+          "risk": "Review",
+          "evidence_ids": [
+            "E-001",
+            "E-002",
+            "E-003",
+            "E-004",
+            "E-005",
+            "E-006",
+            "E-007",
+            "E-008",
+            "E-009",
+            "E-010",
+            "E-011",
+            "E-012",
+            "E-013",
+            "E-014",
+            "E-015"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "E-001",
+          "kind": "repository",
+          "claim": "Repository archival state",
+          "value": false,
+          "source_url": "https://github.com/pallets/flask",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-002",
+          "kind": "activity",
+          "claim": "Days since the last recorded push",
+          "value": 22,
+          "source_url": "https://github.com/pallets/flask/commits",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-003",
+          "kind": "community",
+          "claim": "Open issue and pull-request count",
+          "value": 4,
+          "source_url": "https://github.com/pallets/flask/issues",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-004",
+          "kind": "community",
+          "claim": "GitHub stars",
+          "value": 74929,
+          "source_url": "https://github.com/pallets/flask",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-005",
+          "kind": "licensing",
+          "claim": "Declared license",
+          "value": "BSD-3-Clause",
+          "source_url": "https://github.com/pallets/flask",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-006",
+          "kind": "code",
+          "claim": "Primary language by bytes",
+          "value": "Python",
+          "source_url": "https://github.com/pallets/flask",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-007",
+          "kind": "issue",
+          "claim": "Add Cloudflare to Flask Hosting Platforms docs?",
+          "value": "open",
+          "source_url": "https://github.com/pallets/flask/issues/6146",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-008",
+          "kind": "history",
+          "claim": "Sampled commit count",
+          "value": 120,
+          "source_url": "https://github.com/pallets/flask/commits",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-009",
+          "kind": "unfinished",
+          "claim": "XXX in tests/test_testing.py",
+          "value": "\")",
+          "source_url": "https://github.com/pallets/flask/blob/HEAD/tests/test_testing.py#L122",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-010",
+          "kind": "unfinished",
+          "claim": "XXX in tests/test_testing.py",
+          "value": "\")",
+          "source_url": "https://github.com/pallets/flask/blob/HEAD/tests/test_testing.py#L130",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-011",
+          "kind": "unfinished",
+          "claim": "XXX in tests/test_testing.py",
+          "value": ".example.com:1234/foo/\"",
+          "source_url": "https://github.com/pallets/flask/blob/HEAD/tests/test_testing.py#L131",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-012",
+          "kind": "unfinished",
+          "claim": "XXX in tests/test_testing.py",
+          "value": "\")",
+          "source_url": "https://github.com/pallets/flask/blob/HEAD/tests/test_testing.py#L136",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-013",
+          "kind": "unfinished",
+          "claim": "XXX in tests/test_testing.py",
+          "value": ".example.com:1234/foo/\"",
+          "source_url": "https://github.com/pallets/flask/blob/HEAD/tests/test_testing.py#L137",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-014",
+          "kind": "unfinished",
+          "claim": "XXX in tests/test_testing.py",
+          "value": "\")",
+          "source_url": "https://github.com/pallets/flask/blob/HEAD/tests/test_testing.py#L314",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-015",
+          "kind": "unfinished",
+          "claim": "XXX in tests/test_testing.py",
+          "value": "\" == response.data",
+          "source_url": "https://github.com/pallets/flask/blob/HEAD/tests/test_testing.py#L320",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        },
+        {
+          "id": "E-016",
+          "kind": "unfinished",
+          "claim": "XXX in tests/test_testing.py",
+          "value": "\")",
+          "source_url": "https://github.com/pallets/flask/blob/HEAD/tests/test_testing.py#L331",
+          "observed_at": "2026-10-30T10:03:55.512236+00:00"
+        }
+      ]
+    }
+  ]
+}

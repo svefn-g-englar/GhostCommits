@@ -21,6 +21,12 @@ class ClaimValidatorTests(unittest.TestCase):
         validated, _ = validate_findings(result, PACKET)
         self.assertEqual(validated["findings"][0]["confidence"], 1.0)
 
+    def test_normalizes_unambiguous_short_evidence_ids(self):
+        result = {"findings":[{"finding":"Observed","evidence_ids":["e-02"],"confidence":0.9,"uncertainties":[],"recommended_action":"Verify"}]}
+        validated, warnings = validate_findings(result, PACKET)
+        self.assertEqual(validated["findings"][0]["evidence_ids"], ["E-002"])
+        self.assertEqual(warnings, [])
+
     def test_resurrection_plan_is_actionable(self):
         analysis = {"findings":[{"recommended_action":"Reproduce issue 1","evidence_ids":["E-003"]}]}
         plan = build_resurrection_plan(PACKET, analysis)

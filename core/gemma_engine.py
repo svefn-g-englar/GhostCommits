@@ -60,7 +60,7 @@ def _fallback(packet: Dict[str, Any]) -> Dict[str, Any]:
 
 def analyze_with_gemma(packet: Dict[str, Any], allow_fallback: bool = True) -> Dict[str, Any]:
     base_url = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434").rstrip("/")
-    model = os.getenv("GHOSTCOMMITS_MODEL", "gemma3:4b")
+    model = os.getenv("GHOSTCOMMITS_MODEL", "gemma3:1b")
     payload = {
         "model": model,
         "stream": False,

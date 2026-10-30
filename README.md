@@ -24,7 +24,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-ollama pull gemma3:4b
+ollama pull gemma3:1b
 streamlit run app.py
 ```
 
@@ -63,7 +63,7 @@ Streamlit UI ──────── timeline, whispers, roadmap, PNG + JSON
 | --- | --- | --- |
 | `GITHUB_TOKEN` | empty | Raises GitHub API limits |
 | `OLLAMA_BASE_URL` | `http://127.0.0.1:11434` | Ollama endpoint |
-| `GHOSTCOMMITS_MODEL` | `gemma3:4b` | Open-weight interpreter |
+| `GHOSTCOMMITS_MODEL` | `gemma3:1b` | Open-weight interpreter |
 | `GHOSTCOMMITS_MAX_REPO_MB` | `250` | Recommended checkout cap |
 
 ## Tests
@@ -74,6 +74,18 @@ python -m compileall app.py core ui tests
 ```
 
 Tests cover URL validation, DNS and timeout failures, missing repositories, rate limiting, malformed GitHub responses, evidence generation, unsupported-claim rejection, confidence normalization, and resurrection planning without network calls.
+
+## Reproducible evaluation
+
+The competition evaluation uses one explicitly archived repository, one inactive but unarchived repository, and one active repository. It measures live source-link validity, evidence-ID support, lifecycle classification, recommendation actionability, AI usage, and end-to-end duration.
+
+```bash
+python -m evaluation.run_evaluation
+```
+
+The command requires GitHub access and a running `gemma3:1b` Ollama model. It writes the measured, inspectable report to `evaluation/results.json`. Fallback output is rejected by default so a benchmark cannot silently claim AI performance when Gemma is unavailable. See the [evaluation methodology](evaluation/README.md) for metric definitions and limitations.
+
+Latest measured run (October 30, 2026): **3/3 classifications correct, 50/50 evidence URLs reachable, 3/3 findings supported, and 18/18 roadmap steps actionable.** Every case used Gemma rather than fallback output. Mean end-to-end duration was 60.60 seconds on the local M1 test machine. Full evidence and per-case timings are preserved in [`evaluation/results.json`](evaluation/results.json).
 
 ## Project layout
 
@@ -96,6 +108,10 @@ ghostcommits/
 │   ├── charts.py
 │   └── styles.css
 ├── tests/
+├── evaluation/
+│   ├── README.md
+│   ├── run_evaluation.py
+│   └── results.json
 ├── examples/sample_report.json
 └── assets/
 ```

@@ -52,7 +52,7 @@ with st.sidebar:
     st.caption("Safety: public GitHub only · bounded clone · text inspection only · no repository code execution")
     st.divider()
     st.markdown("**Inference runtime**")
-    st.code(os.getenv("GHOSTCOMMITS_MODEL", "gemma3:4b"), language=None)
+    st.code(os.getenv("GHOSTCOMMITS_MODEL", "gemma3:1b"), language=None)
     st.caption("If Ollama is unavailable, the app transparently switches to a deterministic evidence-based fallback.")
 
 st.markdown(
