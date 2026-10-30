@@ -51,6 +51,17 @@
 .stButton>button,.stDownloadButton>button{color:#fff1eb!important}.stTextInput input{background:#0d0708!important;border-color:#4b2b30!important}.stTabs [data-baseweb="tab-list"]{border-color:var(--line)}
 .stAlert{background:#160a0d!important;color:var(--text)!important;border:1px solid #4b2b30!important}
 
+/* Keep the sidebar mascot optically centered at every sidebar width. */
+[data-testid="stSidebar"] [data-testid="stFullScreenFrame"]:has([data-testid="stImage"]){
+    display:flex;
+    width:100%;
+    justify-content:center;
+}
+[data-testid="stSidebar"] [data-testid="stImage"] img{
+    display:block;
+    margin-inline:auto;
+}
+
 /* Responsive composition: keep the identity and hero clear of Streamlit chrome. */
 .block-container{
     width:min(100%,1280px);
@@ -62,23 +73,29 @@
 }
 .sidebar-brand{
     display:flex;
+    flex-direction:column;
     align-items:center;
-    gap:13px;
+    justify-content:center;
+    gap:10px;
+    width:100%;
     min-height:78px;
     margin:0 0 27px;
     padding:9px 0 20px;
     border-bottom:1px solid rgba(200,47,74,.28);
     position:relative;
+    text-align:center;
+    box-sizing:border-box;
 }
 .sidebar-brand:after{
     content:"";
     position:absolute;
-    left:0;
+    left:50%;
     bottom:-1px;
     width:62px;
     height:1px;
     background:var(--ghost);
     box-shadow:0 0 12px rgba(200,47,74,.5);
+    transform:translateX(-50%);
 }
 .sidebar-brand img{
     display:block;
