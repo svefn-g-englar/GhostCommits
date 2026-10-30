@@ -49,6 +49,24 @@ def load_css(path: str = "ui/styles.css", sidebar_art: str = "assets/sidebar-hau
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
 
+def sidebar_brand(logo_path: str = "assets/logo.png") -> None:
+    """Render a stable, fully visible sidebar identity lockup."""
+    path = Path(logo_path)
+    image = ""
+    if path.exists():
+        encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+        image = f'<img src="data:image/png;base64,{encoded}" alt="GhostCommits logo">'
+
+    st.markdown(
+        f"""<div class="sidebar-brand">
+        {image}
+        <div><strong>Ghost<span>Commits</span></strong>
+        <small>SOFTWARE ARCHAEOLOGY</small></div>
+        </div>""",
+        unsafe_allow_html=True,
+    )
+
+
 def repository_header(packet: Dict[str, Any], analysis: Dict[str, Any]) -> None:
     repo = packet["repository"]
     model = html.escape(str(analysis.get("model", "unknown")))

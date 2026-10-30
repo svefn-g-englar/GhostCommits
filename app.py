@@ -17,7 +17,16 @@ from core.git_analyzer import analyze_repository
 from core.github_client import GitHubClient, GitHubClientError, parse_public_github_url
 from core.resurrection import build_resurrection_plan
 from ui.charts import activity_timeline, signal_profile
-from ui.components import build_epitaph_png, evidence_list, findings_cards, load_css, metric_strip, repository_header, roadmap_list
+from ui.components import (
+    build_epitaph_png,
+    evidence_list,
+    findings_cards,
+    load_css,
+    metric_strip,
+    repository_header,
+    roadmap_list,
+    sidebar_brand,
+)
 
 load_dotenv()
 
@@ -46,7 +55,7 @@ def load_sample() -> Tuple[Dict[str, Any], Dict[str, Any], list, list]:
 st.markdown('<div class="ghost-brand"><div><strong>Ghost<i>Commits</i></strong><span>EVIDENCE-GROUNDED SOFTWARE ARCHAEOLOGY</span></div></div>', unsafe_allow_html=True)
 
 with st.sidebar:
-    st.image("assets/logo.png", width=112)
+    sidebar_brand()
     st.markdown("### Investigation controls")
     deep_clone = st.toggle("Deep Git archaeology", value=True, help="Shallow-clones the repository to mine commit history and TODO markers. Repository code is never executed.")
     st.caption("Safety: public GitHub only · bounded clone · text inspection only · no repository code execution")
