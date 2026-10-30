@@ -15,6 +15,32 @@ GhostCommits is a competition-ready, open-source AI software archaeologist. It c
 - **Digital Epitaph** — a shareable PNG memorial generated from verified facts.
 - **Adversarial safety** — public GitHub only, bounded clone, no code execution.
 
+## Product tour
+
+### 01 · Autopsy
+
+The activity heartbeat and signal profile expose the repository's observable development history, while every displayed conclusion remains connected to verified evidence.
+
+![GhostCommits autopsy dashboard with development heartbeat and signal profile](assets/screenshots/autopsy.png)
+
+### 02 · Whispers
+
+Gemma interpretations pass through the claim firewall before rendering, with evidence IDs, uncertainty, and confidence shown directly in each finding.
+
+![GhostCommits evidence-grounded AI interpretation](assets/screenshots/whispers.png)
+
+### 03 · Revive
+
+The resurrection blueprint converts surviving repository evidence into a sequenced, contributor-ready recovery plan—without executing repository code.
+
+![GhostCommits resurrection blueprint](assets/screenshots/revive.png)
+
+### 04 · Epitaph
+
+Each investigation produces a shareable digital epitaph summarizing the repository's verified state and key measurements.
+
+![GhostCommits downloadable digital epitaph](assets/screenshots/epitaph.png)
+
 ## Quick start
 
 Requirements: Python 3.10+, Git, and optionally Ollama for Gemma inference.
@@ -114,6 +140,10 @@ ghostcommits/
 │   └── results.json
 ├── examples/sample_report.json
 └── assets/
+    ├── demo.png
+    ├── logo.png
+    ├── sidebar-haunt.png
+    └── screenshots/
 ```
 
 MIT licensed.
