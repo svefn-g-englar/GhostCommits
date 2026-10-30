@@ -25,7 +25,6 @@ from ui.components import (
     metric_strip,
     repository_header,
     roadmap_list,
-    sidebar_brand,
 )
 
 load_dotenv()
@@ -55,7 +54,7 @@ def load_sample() -> Tuple[Dict[str, Any], Dict[str, Any], list, list]:
 st.markdown('<div class="ghost-brand"><div><strong>Ghost<i>Commits</i></strong><span>EVIDENCE-GROUNDED SOFTWARE ARCHAEOLOGY</span></div></div>', unsafe_allow_html=True)
 
 with st.sidebar:
-    sidebar_brand()
+    st.image("assets/logo.png", width=152)
     st.markdown("### Investigation controls")
     deep_clone = st.toggle("Deep Git archaeology", value=True, help="Shallow-clones the repository to mine commit history and TODO markers. Repository code is never executed.")
     st.caption("Safety: public GitHub only · bounded clone · text inspection only · no repository code execution")
